@@ -1,0 +1,20 @@
+
+
+<?php $part = $part ?? 'all'; ?>
+<?php if($part !== 'rest'): ?>
+    <span class="block font-mono text-xs font-normal text-slate-400 dark:text-slate-500 mt-0.5"><?php echo e($ticket->order_code); ?></span>
+    <?php if($withName ?? false): ?>
+        <span class="block text-base font-bold leading-tight break-words mt-0.5"><?php echo e($ticket->customer_name); ?></span>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if($part !== 'head'): ?>
+<?php if($ticket->customer_phone || $ticket->customer_email): ?>
+    <span class="block text-xs font-normal text-slate-500 dark:text-slate-400 mt-0.5"><?php echo e($ticket->customer_phone); ?><?php if($ticket->customer_phone && $ticket->customer_email): ?> &middot; <?php endif; ?><?php echo e($ticket->customer_email); ?></span>
+<?php endif; ?>
+<?php if($ticket->notes): ?>
+    <span class="ticket-order-text block text-xs font-normal text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700/50 rounded-md px-2 py-1 mt-1"><?php echo e($ticket->notes); ?></span>
+<?php else: ?>
+    <span class="block text-xs font-normal text-slate-400 dark:text-slate-500 mt-0.5">Order: -</span>
+<?php endif; ?>
+<?php endif; ?>
+<?php /**PATH /var/www/html/resources/views/operator/partials/ticket-detail.blade.php ENDPATH**/ ?>
